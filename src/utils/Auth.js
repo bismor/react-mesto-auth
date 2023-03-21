@@ -1,6 +1,16 @@
 class Auth {
   constructor({baseUrl}) {
     this._baseUrl = baseUrl;
+    this._headers = {
+      "Content-Type": "application/json" 
+    }
+  }
+
+  _resToJSON(res) {
+    if (res.ok) {
+      return res.json();
+    }
+    return Promise.reject("Произошла ошибка");
   }
 
   signUp(password, email) {

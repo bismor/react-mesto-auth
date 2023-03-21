@@ -6,6 +6,7 @@ import auth from "../utils/Auth";
 import Header from "./Header";
 import { createPortal } from "react-dom";
 import ApprovePict from "../images/checkmark.png"
+import UnapprovePict from "../images/cross.png"
 
 function Register({ name, button }) {
   const [formValue, setFormValue] = useState({
@@ -30,10 +31,12 @@ function Register({ name, button }) {
     });
   };
 
-  const handleClose = useCallback(() => {
+  const handleClose = () => {
     setInfoTooltip((s) => ({...s, isOpen: false}));
-    navigate("/sign-in", { replace: true });
-  }, [])
+    if (infoTooltip.status === "Вы успешно зарегистрировались!") {
+      navigate("/sign-in", { replace: true });
+    }
+  }
 
   function opetTooltip() {
     setInfoTooltip((s) => ({...s, isOpen: true}));
@@ -45,9 +48,21 @@ function Register({ name, button }) {
     auth
       .signUp(password, email)
       .then(() => {
+        setInfoTooltip({
+          visible: "popup popup_opened InfoTooltip",
+          images: ApprovePict,
+          status: "Вы успешно зарегистрировались!",
+        })
         opetTooltip()
       })
-      .catch(err => console.log(err));
+      .catch(() => {
+        setInfoTooltip({
+          visible: "popup popup_opened InfoTooltip",
+          images: UnapprovePict,
+          status: "Что-то пошло не так! Попробуйте еще раз.",
+        })
+        opetTooltip()
+      })
   };
 
   function navRegister() {
