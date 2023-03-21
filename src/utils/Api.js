@@ -1,11 +1,7 @@
 class Api {
-  constructor({ apiKey, baseUrl }) {
+  constructor({ headers, baseUrl }) {
     this._baseUrl = baseUrl;
-    this._authorization = apiKey;
-    this._headers = {
-      authorization: this._authorization,
-      "Content-Type": "Application/JSON",
-    };
+    this._headers = headers;
   }
 
   //Эта функция заменяет в объекте ID с нижним подчеркиванием на обычное id. используется только для карточек
@@ -94,10 +90,7 @@ class Api {
       {
         method: "PATCH",
         body: JSON.stringify(link),
-        headers: {
-          authorization: this._authorization,
-          "Content-Type": "Application/JSON",
-        },
+        headers: this._headers,
       }
     ).then(this._resToJSON);
   }
@@ -114,8 +107,11 @@ class Api {
 }
 
 const api = new Api({
+  headers: {
+    "authorization": "2c0e8e40-9bc8-4cbb-b338-6dd82b568a54",
+    "Content-Type": "Application/JSON",
+  },
   baseUrl: "https://mesto.nomoreparties.co/v1/cohort-57/",
-  apiKey: "2c0e8e40-9bc8-4cbb-b338-6dd82b568a54",
 });
 
 export default api;
