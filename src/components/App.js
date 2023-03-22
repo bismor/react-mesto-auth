@@ -119,9 +119,7 @@ function App() {
     api
       .setUserInfo(userInfo)
       .then((data) => {
-        setCurrentUser(() => {
-          return data;
-        });
+        setCurrentUser(data);
         closeAllPopups();
       })
       .catch((err) => {
@@ -133,9 +131,7 @@ function App() {
     api
       .setUserAvatar(userAvatar)
       .then((data) => {
-        setCurrentUser(() => {
-          return data;
-        });
+        setCurrentUser(data);
         closeAllPopups();
       })
       .catch((err) => {
