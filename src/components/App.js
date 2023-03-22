@@ -22,51 +22,56 @@ function App() {
   const [selectedCard, setSelectedCard] = useState(null);
   const [currentUser, setCurrentUser] = useState(null);
   const [loggedIn, setloggedIn] = useState(false);
-  const [userEmail, setUseremail] = useState('')
+  const [userEmail, setUseremail] = useState("");
 
   const navigate = useNavigate();
 
-  useEffect(() => {
-    tokenCheck();
-  }, [loggedIn]);
-
-  function tokenCheck() {
+  const tokenCheck = useCallback(() => {
     if (localStorage.getItem("token")) {
       const token = localStorage.getItem("token");
       if (token) {
-        auth.checkJwtToken(token).then((res) => {
-          if (res) {
-            setloggedIn(true);
-            setUseremail(res.data.email)
-            navigate("/", { replace: true });
-          }
-        })
-        .catch((err) => {
-          console.log(err); // выведем ошибку в консоль
-        });
+        auth
+          .checkJwtToken(token)
+          .then((res) => {
+            if (res) {
+              setloggedIn(true);
+              setUseremail(res.data.email);
+              navigate("/", { replace: true });
+            }
+          })
+          .catch((err) => {
+            console.log(err); // выведем ошибку в консоль
+          });
       }
-      
+    } else {
+      setUseremail("");
     }
-  }
+  }, [navigate]);
+
+  useEffect(() => {
+    tokenCheck();
+  }, [loggedIn, tokenCheck]);
 
   const handleCardClick = useCallback((CardInfo) => {
     setSelectedCard(CardInfo);
   }, []);
 
   useEffect(() => {
-    api.getUserInfo().then((data) => {
-      setCurrentUser(data);
-    })
-    .catch((err) => {
-      console.log(err); // выведем ошибку в консоль
-    });
+    api
+      .getUserInfo()
+      .then((data) => {
+        setCurrentUser(data);
+      })
+      .catch((err) => {
+        console.log(err); // выведем ошибку в консоль
+      });
   }, []);
 
   const closeAllPopups = useCallback(() => {
     setIsEditProfilePopupOpen(false);
     setIsAddPlacePopupOpen(false);
     setIsEditAvatarPopupOpen(false);
-    
+
     setSelectedCard(null);
   }, []);
 
