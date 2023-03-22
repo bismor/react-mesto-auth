@@ -55,9 +55,7 @@ function App() {
 
   useEffect(() => {
     api.getUserInfo().then((data) => {
-      setCurrentUser(() => {
-        return data;
-      });
+      setCurrentUser(data);
     })
     .catch((err) => {
       console.log(err); // выведем ошибку в консоль
