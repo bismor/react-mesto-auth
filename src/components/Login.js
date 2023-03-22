@@ -32,7 +32,7 @@ function Login({ name, button, setloggedIn }) {
   const handleClose = useCallback(() => {
     setInfoTooltip((s) => ({...s, isOpen: false}));
     navigate("/sign-in", { replace: true });
-  }, [])
+  }, [navigate])
 
   function opentTooltip() {
     setInfoTooltip((s) => ({...s, isOpen: true}));
