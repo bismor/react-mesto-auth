@@ -42,7 +42,6 @@ function EditProfilePopup({ isOpen, onClose, onUpdateUser }) {
       buttonText="Сохранить"
       onSubmit={handleSubmit}
     >
-      <>
         <section className="popup__section">
           <input
             onChange={handleChangeName}
@@ -69,7 +68,6 @@ function EditProfilePopup({ isOpen, onClose, onUpdateUser }) {
           />
           <span className="popup__input-error"></span>
         </section>
-      </>
     </PopupWithForm>
   );
 }
