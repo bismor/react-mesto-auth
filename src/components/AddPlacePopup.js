@@ -11,7 +11,6 @@ function AddPlacePopup({ isOpen, onClose, onAddPlace }) {
       name: inputNameCard.current.value,
       link: inputLinkCard.current.value,
     });
-    onClose();
   }
 
   return (
