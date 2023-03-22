@@ -38,7 +38,7 @@ function Register({ name, button }) {
     }
   }
 
-  function opetTooltip() {
+  function opentTooltip() {
     setInfoTooltip((s) => ({...s, isOpen: true}));
   }
 
@@ -53,7 +53,7 @@ function Register({ name, button }) {
           images: ApprovePict,
           status: "Вы успешно зарегистрировались!",
         })
-        opetTooltip()
+        opentTooltip()
       })
       .catch(() => {
         setInfoTooltip({
@@ -61,7 +61,7 @@ function Register({ name, button }) {
           images: UnapprovePict,
           status: "Что-то пошло не так! Попробуйте еще раз.",
         })
-        opetTooltip()
+        opentTooltip()
       })
   };
 
