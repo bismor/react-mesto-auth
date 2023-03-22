@@ -40,8 +40,12 @@ function App() {
             setUseremail(res.data.email)
             navigate("/", { replace: true });
           }
+        })
+        .catch((err) => {
+          console.log(err); // выведем ошибку в консоль
         });
       }
+      
     }
   }
 
@@ -54,6 +58,9 @@ function App() {
       setCurrentUser(() => {
         return data;
       });
+    })
+    .catch((err) => {
+      console.log(err); // выведем ошибку в консоль
     });
   }, []);
 
