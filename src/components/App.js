@@ -28,7 +28,7 @@ function App() {
 
   useEffect(() => {
     tokenCheck();
-  }, []);
+  }, [loggedIn]);
 
   function tokenCheck() {
     if (localStorage.getItem("token")) {
