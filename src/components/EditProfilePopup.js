@@ -37,8 +37,8 @@ function EditProfilePopup({ isOpen, onClose, onUpdateUser }) {
     <PopupWithForm
       isOpen={isOpen}
       onClose={onClose}
-      title="Новое место"
-      name="cardPopup"
+      title="Редактировать профиль"
+      name="profilePopup"
       buttonText="Сохранить"
       onSubmit={handleSubmit}
     >
@@ -60,10 +60,10 @@ function EditProfilePopup({ isOpen, onClose, onUpdateUser }) {
           <input
             onChange={handleChangeDescription}
             value={userDescription}
-            type="url"
+            type="text"
             name="about"
             className="popup__text popup__job"
-            placeholder="Ссылка на картинку"
+            placeholder="Введите профессию"
             required
           />
           <span className="popup__input-error"></span>
