@@ -94,16 +94,6 @@ class Api {
       }
     ).then(this._resToJSON);
   }
-
-  addCard(data) {
-    return fetch(`${this._baseUrl}cards`, {
-      method: "POST",
-      body: JSON.stringify(data),
-      headers: this._headers,
-    })
-      .then(this._resToJSON)
-      .then(this.fixIdProperty);
-  }
 }
 
 const api = new Api({
