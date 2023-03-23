@@ -74,7 +74,7 @@ class Api {
   }
 
   setUserInfo(formvalue) {
-    return fetch("https://mesto.nomoreparties.co/v1/cohort-57/users/me", {
+    return fetch(`${this._baseUrl}users/me`, {
       method: "PATCH",
       headers: this._headers,
       body: JSON.stringify({
