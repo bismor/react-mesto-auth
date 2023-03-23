@@ -34,7 +34,7 @@ function Login({ name, button, setloggedIn }) {
     navigate("/sign-in", { replace: true });
   }, [navigate])
 
-  function opentTooltip() {
+  function openTooltip() {
     setInfoTooltip((s) => ({...s, isOpen: true}));
   }
 
@@ -52,10 +52,10 @@ function Login({ name, button, setloggedIn }) {
           navigate("/", { replace: true });
           localStorage.setItem("token", data.token);
         } else {
-          opentTooltip()
+          openTooltip()
         }
       })
-      .catch(() => opentTooltip());
+      .catch(() => openTooltip());
   };
 
   function navRegister() {

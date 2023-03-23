@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from "react";
+import React, { useState } from "react";
 import InfoTooltip from "./InfoTooltip";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
@@ -38,7 +38,7 @@ function Register({ name, button }) {
     }
   }
 
-  function opentTooltip() {
+  function openTooltip() {
     setInfoTooltip((s) => ({...s, isOpen: true}));
   }
 
@@ -63,7 +63,7 @@ function Register({ name, button }) {
         
       })
       .finally(() => {
-        opentTooltip()
+        openTooltip()
       })
   };
 
