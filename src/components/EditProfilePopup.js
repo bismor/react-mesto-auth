@@ -49,7 +49,7 @@ function EditProfilePopup({ isOpen, onClose, onUpdateUser }) {
             type="text"
             name="name"
             className="popup__text popup__name"
-            placeholder="Название"
+            placeholder="Введите имя"
             required
             minLength={2}
             maxLength={30}
